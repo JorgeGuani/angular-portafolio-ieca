@@ -3,3 +3,61 @@
     DESCRIPCIÓN:
         Intenta hacer una tabla de datos en HTML, existe una etiqueta llamada <table> que es útil para esos casos
 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla</title>
+    <style>
+        body {
+            font-family: 'Helvetica';
+            padding: 10px 30px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table thead tr {
+            background-color: #dff0fc;
+        }
+        th, td {
+            padding: 3px 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tabla de datos</h1>
+    <table >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Edad (años)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Jorge</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Ana</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Miguel</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Emanuel</td>
+                <td>21</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
