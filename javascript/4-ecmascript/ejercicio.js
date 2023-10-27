@@ -27,9 +27,12 @@ class ListaNumeros {
         */
        
         // Calculo de la media
-        const media = this.numeros.reduce((a, b) => a + b, 0) / this.numeros.length
+        const media = this.numeros.reduce((a, b) => a + b, 0) / this.numeros.length;
+        console.log('Media: ', media);
 
         // COMPLETA AQUÍ CÓDIGO CON MÉTODO .filter
+        const resultado = this.numeros.filter(numero => numero > media);
+        console.log('Números mayores a media: ', resultado);
     }
 
     ordenamientoMayorAMenor() {
@@ -42,12 +45,13 @@ class ListaNumeros {
         */
 
         // COMPLETA AQUÍ CÓDIGO CON MÉTODO .sort
-
-        console.log(this.numeros)
+        this.numeros.sort((a, b) => b > a ? 1 : a > b ? -1 : 0);
+        console.log('Números ordenados de mayor a menor: ', this.numeros)
     }
     
 }
 
 const misNumeros = new ListaNumeros([1,5,3,4,2,6,8,10,9,7])
+console.log('Números: ', misNumeros.numeros)
 misNumeros.numerosMayoresAMedia()
 misNumeros.ordenamientoMayorAMenor()
