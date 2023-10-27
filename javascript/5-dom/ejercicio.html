@@ -11,7 +11,7 @@
     </div>
     <div style="display: flex">
         <button id="btnActualizacion" onClick="modificarEncabezado()" style="margin-right: 10px">Establecer Encabezado</button>
-        <button id="btnUndo" disabled>Encabezado Anterior</button>
+        <button id="btnUndo" disabled onClick="regresarTitulo()">Encabezado Anterior</button>
     </div>
     <h1 id="encabezado">...</h1>
 
@@ -37,9 +37,32 @@
         const btnUndo = document.getElementById('btnUndo')
         const tituloEncabezado = document.getElementById('encabezado')
         const inputEncabezado = document.getElementById('inputEncabezado')
+        let historialTitulos = [];
 
         function modificarEncabezado() {
             /* Tu código aquí */
+            if (!inputEncabezado.value) {
+                alert('El valor no puede estar vacío');
+                return;
+            }
+            historialTitulos.push(tituloEncabezado.innerText);
+            tituloEncabezado.innerText = inputEncabezado.value;
+            inputEncabezado.value = '';
+            checarHistorialSize();
+        }
+
+        function regresarTitulo() {
+            if (historialTitulos.length === 0) {
+                alert('No hay ningún título previo');
+                return;
+            }
+            const ultimoTitulo = historialTitulos.pop();
+            tituloEncabezado.innerText = ultimoTitulo;
+            checarHistorialSize();
+        }
+
+        function checarHistorialSize() {
+            btnUndo.disabled = historialTitulos.length < 2;
         }
     </script>
 </body>
