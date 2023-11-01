@@ -54,9 +54,10 @@ export class AppComponent implements OnInit {
   }
 
   miPokedex: Pokemon[] = [];
+  miPokedexImagenes: string[] = [];
 
-  ngOnInit(): void {
-      fetch(`https://pokeapi.co/api/v2/pokemon?limit=8&offset=${Math.floor(Math.random() * 501)}`)
+  async ngOnInit(): Promise<void> {
+      await fetch(`https://pokeapi.co/api/v2/pokemon?limit=8&offset=${Math.floor(Math.random() * 501)}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.results)
@@ -67,7 +68,16 @@ export class AppComponent implements OnInit {
       AQUÍ PUEDES CONTINUAR CON EL EJERCICIO PARA OBTENER LA IMAGEN DEL POKÉMON
         -> Recuerda revisar el API de https://pokeapi.co/ <-
       */
-
+      // this.miPokedexSelected = this.miPokedex[0];
+      this.miPokedexImagenes = [];
+      for (let i = 0; i < this.miPokedex.length; i++) {
+        fetch(this.miPokedex[i].url)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Primer pokemón: ', data);
+          this.miPokedexImagenes[i] = data.sprites.front_default;
+        })
+      }
   }
 
   nuevoPokemon: string = "";

@@ -116,17 +116,26 @@ h3::before {
   border: 1px dashed red;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.directivas .pokemon {
+  min-width: 198px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .directivas .pokemons a {
   color: cyan;
 }
 
-.directivas .pokemons div::before {
+.directivas .pokemons div.pokemon .pokemon-nombre::before {
   content: '👾 ';
 }
 
-.directivas .pokemons div {
+.directivas .pokemons > div {
   border: 1px dashed green;
   width: 150px;
   font-size: 0.85rem;
